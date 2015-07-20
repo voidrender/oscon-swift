@@ -541,3 +541,24 @@ extension Regex : StringLiteralConvertible {
 let nicerRegex : Regex = "foo"
 nicerRegex.match("foo bar")
 
+//
+// Auto-closure
+//
+// In Objective-C (and C), we will commonly use the pre-processor to guard certain blocks of code with #ifdef, e.g.:
+// #ifdef DEBUG
+// [self doSomethingIfDebugBuild]
+// #endif
+// Swift doesn't have a preprocessor, so we use the assert function.
+assert(1 == 1, "Math is broken if this is false")
+
+// Implementation of this function uses the @autoclosure keyword. Something like this:
+let debugMode = true
+func myAssert(predicate: @autoclosure () -> Bool) {
+    if debugMode == true {
+        if predicate() == false {
+            abort()
+        }
+    }
+}
+myAssert(1 == 1)
+
