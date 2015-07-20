@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var osconLabel: UILabel!
     
+    var myObjectiveCClass : MyObjectiveCClass = MyObjectiveCClass()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -24,6 +26,7 @@ class ViewController: UIViewController {
 
     @IBAction func buttonTapped(sender: UIButton) {
         self.osconLabel.text = "Hi there"
+        println(myObjectiveCClass.doSomething(1, withOtherThing: 2))
     }
 
 }
