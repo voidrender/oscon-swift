@@ -24,6 +24,13 @@ class ViewController: UIViewController {
                     println("It's something else: \(data.dynamicType)")
                 }
             })
+        
+        Alamofire.request(.GET, "https://httpbin.org/get")
+            .responseJSON(options: NSJSONReadingOptions.allZeros) { (request, response, data, error) -> Void in
+                if let dictionary = data as? NSDictionary {
+                    println("I loaded a dictionary! \(dictionary)")
+                }
+        }
     }
 
     override func didReceiveMemoryWarning() {
