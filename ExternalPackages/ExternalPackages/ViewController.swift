@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController {
+    
+    var myManager : Manager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,19 @@ class ViewController: UIViewController {
             .responseJSON(options: nil) { (request, response, responseObject, error) -> Void in
                 println("Received \(responseObject)")
         }
+        
+        println("Manipulating headers")
+        var defaultHeaders = Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders ?? [:]
+        defaultHeaders["X-Hello"] = "Yes"
+        
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.HTTPAdditionalHeaders = defaultHeaders
+        
+        myManager = Manager(configuration: configuration)
+        myManager?.request(.GET, "https://httpbin.org/get")
+            .responseString(encoding: nil, completionHandler: { (request, response, string, error) -> Void in
+                println("received: \(string)")
+            })
     }
 
     override func didReceiveMemoryWarning() {
