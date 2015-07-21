@@ -29,12 +29,18 @@
                                     <action selector="downloadImage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1Gd-pJ-crn"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kAa-oQ-czr">
+                                <rect key="frame" x="282" y="252" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4Hy-kv-ga0" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="2kS-SH-TZz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4Hy-kv-ga0" secondAttribute="trailing" constant="-16" id="6TD-C9-UVX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4Hy-kv-ga0" secondAttribute="trailing" constant="-16" id="9az-cP-n6o"/>
+                            <constraint firstAttribute="centerX" secondItem="kAa-oQ-czr" secondAttribute="centerX" id="HZI-2t-Gof"/>
+                            <constraint firstAttribute="centerY" secondItem="kAa-oQ-czr" secondAttribute="centerY" constant="30" id="Pl8-WO-WLy"/>
                             <constraint firstItem="4Hy-kv-ga0" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="RQ0-Fg-Qld"/>
                             <constraint firstItem="Tzb-0W-5mw" firstAttribute="top" secondItem="4Hy-kv-ga0" secondAttribute="bottom" constant="8" id="X4l-K8-dMh"/>
                             <constraint firstAttribute="centerX" secondItem="Tzb-0W-5mw" secondAttribute="centerX" id="eMo-rJ-9lP"/>
@@ -51,6 +57,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="kAa-oQ-czr" id="oPj-OA-M6g"/>
                         <outlet property="imageView" destination="4Hy-kv-ga0" id="x9V-UU-SUE"/>
                     </connections>
                 </viewController>

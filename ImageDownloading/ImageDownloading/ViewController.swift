@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func downloadImage(sender: AnyObject) {
+        self.activityIndicator.startAnimating()
+        
         let URLString = "http://placekitten.com/g/500/500"
         let URL = NSURL(string: URLString)
         
@@ -38,6 +41,7 @@ class ViewController: UIViewController {
                 if let theImage = UIImage(data: data!) {
                     NSOperationQueue.mainQueue().addOperationWithBlock() {
                         self.imageView.image = theImage
+                        self.activityIndicator.stopAnimating()
                     }
                 }
             })
