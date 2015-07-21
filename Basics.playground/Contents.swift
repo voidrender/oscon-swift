@@ -542,6 +542,20 @@ let nicerRegex : Regex = "foo"
 nicerRegex.match("foo bar")
 
 //
+// File Access
+//
+let fileManager = NSFileManager.defaultManager()
+var documentsDirectory = fileManager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).first as? NSURL
+
+println(documentsDirectory!)
+
+let fileContents = "I am the very model of a modern major general"
+
+if let destinationURL = documentsDirectory?.URLByAppendingPathComponent("penzance.txt") {
+    fileContents.writeToURL(destinationURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+}
+
+//
 // Auto-closure
 //
 // In Objective-C (and C), we will commonly use the pre-processor to guard certain blocks of code with #ifdef, e.g.:
@@ -549,16 +563,17 @@ nicerRegex.match("foo bar")
 // [self doSomethingIfDebugBuild]
 // #endif
 // Swift doesn't have a preprocessor, so we use the assert function.
-assert(1 == 1, "Math is broken if this is false")
-
-// Implementation of this function uses the @autoclosure keyword. Something like this:
-let debugMode = true
-func myAssert(predicate: @autoclosure () -> Bool) {
-    if debugMode == true {
-        if predicate() == false {
-            abort()
-        }
-    }
-}
-myAssert(1 == 1)
+// Note: uncommenting this section will cause the playground to crash.
+//assert(1 == 1, "Math is broken if this is false")
+//
+//// Implementation of this function uses the @autoclosure keyword. Something like this:
+//let debugMode = true
+//func myAssert(predicate: @autoclosure () -> Bool) {
+//    if debugMode == true {
+//        if predicate() == false {
+//            abort()
+//        }
+//    }
+//}
+//myAssert(1 == 1)
 
