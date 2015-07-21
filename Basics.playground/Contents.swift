@@ -532,7 +532,8 @@ extension Regex : StringLiteralConvertible {
         self.options = .CaseInsensitive
     }
     
-    init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {        self.pattern = value
+    init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {
+        self.pattern = value
         self.options = .CaseInsensitive
     }
 }
@@ -577,3 +578,48 @@ if let destinationURL = documentsDirectory?.URLByAppendingPathComponent("penzanc
 //}
 //myAssert(1 == 1)
 
+//
+// String Operations
+//
+var helloPlayground = "Hello, playground"
+helloPlayground.componentsSeparatedByString(" ")
+
+helloPlayground.uppercaseString
+helloPlayground.lowercaseString
+
+helloPlayground.hasPrefix("Hello")
+helloPlayground.hasSuffix("playground")
+
+helloPlayground.rangeOfString("playground")
+helloPlayground.rangeOfString("PlaYGrOund", options: .CaseInsensitiveSearch)
+
+count(helloPlayground)
+
+//
+// Number Formatter
+//
+let numberFormatter = NSNumberFormatter()
+numberFormatter.numberStyle = .CurrencyStyle
+numberFormatter.stringFromNumber(23.42)
+
+numberFormatter.roundingIncrement = 0.5
+numberFormatter.stringFromNumber(23.42)
+
+numberFormatter.roundingIncrement = 0.0
+
+numberFormatter.numberStyle = .DecimalStyle
+numberFormatter.stringFromNumber(10294701972)
+
+//
+// Mass Formatter
+//
+let massFormatter = NSMassFormatter()
+massFormatter.stringFromKilograms(0.5)
+
+//: Length formatter
+let lengthFormatter = NSLengthFormatter()
+lengthFormatter.stringFromMeters(100)
+
+//: Data Formatter
+let dataFormatter = NSByteCountFormatter()
+dataFormatter.stringFromByteCount(2000000)
