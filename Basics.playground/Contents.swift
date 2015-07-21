@@ -623,3 +623,24 @@ lengthFormatter.stringFromMeters(100)
 //: Data Formatter
 let dataFormatter = NSByteCountFormatter()
 dataFormatter.stringFromByteCount(2000000)
+
+//: Map, reduce, and filter
+let source = [1, 2, 4, 8]
+let mapped = source.map({ $0 * 2 })
+
+// 1 + 2 + 4 + 8
+let reduced = source.reduce(0, combine: { (currentValue, nextValue) -> Int in
+    return currentValue + nextValue
+})
+
+// Shorter alternative
+let shortClosure = source.reduce(0, combine: +)
+println(shortClosure)
+
+let filtered = source.filter({ $0 % 4 == 0 })
+println(filtered)
+
+let sorted = source.sorted({ $0 > $1 })
+println(sorted)
+
+
