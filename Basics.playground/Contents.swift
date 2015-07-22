@@ -1,17 +1,11 @@
-//: Playground - noun: a place where people can play
-
 import UIKit
 
-//
-// Variables and constants
-//
+//: Variables and constants
 var str = "Hello, playground!"
 let constString = "Hello, constant"
-// Always use let until you need a var
+// Always use let unless you need a var
 
-//
-// Optional Values
-//
+//: Optional Values
 var optionalString : String?
 
 optionalString = "Hello"
@@ -27,14 +21,10 @@ else {
 // Unwrap an optional with ?, e.g. optionalString?.someMethod()
 // DANGEROUSLY unwrap with !, e.g. optionalString!.someMethod(), WILL CRASH if nil
 
-//
-// Arrays
-//
+//: Arrays
 var arrayOfInts = [1, 2, 3, 4, 5]
 
-//
-// Dictionaries
-//
+//: Dictionaries
 var niftyDictionary = [
     "Greeting": "Hello",
     "Farewell": "Goodbye"
@@ -51,9 +41,7 @@ var mixedKeys = [
     "two": 2
 ]
 
-//
-// For loops
-//
+//: For loops
 for number in arrayOfInts {
     println("Number: \(number)")
 }
@@ -62,16 +50,12 @@ for (key, value) in niftyDictionary {
     println("Key: \(key) = \(value)")
 }
 
-//
-// Tuples
-//
+//: Tuples
 var grocery = ("Beans", 1.99)
 grocery.0
 grocery.1
 
-//
-// Typealias
-//
+//: Typealias
 typealias GroceryType = (String, Float)
 var fancyGroceryType : GroceryType = ("Beans", 1.99)
 fancyGroceryType.0
@@ -82,15 +66,11 @@ var fancierGroceryType : GroceryTypeWithNames = ("Beans", 1.99)
 fancierGroceryType.name
 fancierGroceryType.price
 
-//
-// Sets
-//
+//: Sets
 var mySet : Set = [1, 2, 3, 4, 5] // Note: must use Set type or it will default to Array
 mySet.insert(5) // Sets enforce unique values
 
-//
-// Switch
-//
+//: Switch
 var number = 42
 
 switch number {
@@ -131,9 +111,7 @@ default:
     println("It's something else.")
 }
 
-//
-// Ifs
-//
+//: Ifs
 if "one".uppercaseString == "ONE" {
     println("Hi.")
 }
@@ -142,9 +120,7 @@ if ("two".uppercaseString == "TWO") {
     println("'if' can also use parens, but doesn't have to.")
 }
 
-//
-// Functions
-//
+//: Functions
 func doSomething() {
     println("Hello!")
 }
@@ -186,9 +162,7 @@ func createAdder(numberToAdd : Int) -> Int -> Int {
 var addTwo = createAdder(2)
 addTwo(40)
 
-//
-// Closures
-//
+//: Closures
 var addThree = { (number) in
     number + 3
 }
@@ -202,9 +176,7 @@ arrayOfInts.sorted( { (first, second) in
 // Can put it after
 arrayOfInts.sorted(){$0 < $1}
 
-//
-// Extensions (mixins)
-//
+//: Extensions (mixins)
 // CGPoint is a C struct
 var myPoint = CGPoint()
 myPoint.x = 2
@@ -236,8 +208,7 @@ func +(left: CGPoint, right: CGPoint) -> CGPoint {
 let anotherPoint = CGPoint(x: 3, y: 4)
 myPoint + anotherPoint
 
-//
-// Classes
+//: Classes
 // Must provide either an initializer OR properties must be optional OR provide default value
 // Access modifiers: (can apply at class level and/or property & function level)
 //   public   - everything can access
@@ -310,8 +281,7 @@ class PrivateModeBrowser : WebBrowser {
     }
 }
 
-//
-// Structures
+//: Structures
 // Do not need to provide initializer, default values, or optionals
 // Compiler provides an initializer with all vars included
 // Are value types
@@ -352,9 +322,7 @@ mySquare.size
 mySquare.area = 9
 mySquare.size
 
-//
-// Generics
-//
+//: Generics
 class Tree<T : Equatable> { // Can 'qualify' types, just like C#
     var data : T
     
@@ -390,9 +358,7 @@ numberTree.addChild(7).addChild(4)
 
 let stringTree = Tree(data: "hello")
 
-//
-// Enumerations
-//
+//: Enumerations
 /* Traditional enum:
 enum CompassDirection {
     North = 0,
@@ -464,10 +430,7 @@ default:
     ()
 }
 
-//
-// Custom Operators
-//
-
+//: Custom Operators
 // Double type does not provide an operator for exponents, so let's create one.
 // 💁 would be a great emoji for this but apparently it doesn't work
 infix operator ** { associativity left precedence 160 }
@@ -488,9 +451,7 @@ a
 b
 
 
-//
-// Literal convertibles
-//
+//: Literal convertibles
 var anArray    = [1, 2, 3]
 var aSet : Set = [1, 2, 3] // This array is converted into a Set automatically
 
@@ -542,9 +503,7 @@ extension Regex : StringLiteralConvertible {
 let nicerRegex : Regex = "foo"
 nicerRegex.match("foo bar")
 
-//
-// File Access
-//
+//: File Access
 let fileManager = NSFileManager.defaultManager()
 var documentsDirectory = fileManager.URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).first as? NSURL
 
@@ -556,9 +515,7 @@ if let destinationURL = documentsDirectory?.URLByAppendingPathComponent("penzanc
     fileContents.writeToURL(destinationURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
 }
 
-//
-// Auto-closure
-//
+//: Autoclosure
 // In Objective-C (and C), we will commonly use the pre-processor to guard certain blocks of code with #ifdef, e.g.:
 // #ifdef DEBUG
 // [self doSomethingIfDebugBuild]
@@ -578,9 +535,7 @@ if let destinationURL = documentsDirectory?.URLByAppendingPathComponent("penzanc
 //}
 //myAssert(1 == 1)
 
-//
-// String Operations
-//
+//: String Operations
 var helloPlayground = "Hello, playground"
 helloPlayground.componentsSeparatedByString(" ")
 
@@ -595,9 +550,7 @@ helloPlayground.rangeOfString("PlaYGrOund", options: .CaseInsensitiveSearch)
 
 count(helloPlayground)
 
-//
-// Number Formatter
-//
+//: Number Formatter
 let numberFormatter = NSNumberFormatter()
 numberFormatter.numberStyle = .CurrencyStyle
 numberFormatter.stringFromNumber(23.42)
@@ -610,9 +563,7 @@ numberFormatter.roundingIncrement = 0.0
 numberFormatter.numberStyle = .DecimalStyle
 numberFormatter.stringFromNumber(10294701972)
 
-//
-// Mass Formatter
-//
+//: Mass Formatter
 let massFormatter = NSMassFormatter()
 massFormatter.stringFromKilograms(0.5)
 
